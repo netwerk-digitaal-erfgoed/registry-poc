@@ -1,1 +1,1 @@
-Documentation of the proof of concept registry
+# Documentation of the proof of concept registry
