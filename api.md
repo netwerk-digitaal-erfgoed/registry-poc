@@ -25,11 +25,11 @@ Registry: API
 
 # <a id="intro">Introduction</a>
 
-This reference outlines the _application programming interface_ (API) of NDE's _proof of concept_ Registry. It describes the endpoints that can be used by consuming applications, such as the collection management systems of cultural heritage institutions.
+This document outlines the _application programming interface_ (API) of NDE's _proof of concept_ Registry. It describes the endpoints that can be used by consuming applications, such as the collection management systems of cultural heritage institutions.
 
 # <a id="status">Status of this document</a>
 
-This document is published for examination, experimental implementation and evaluation.
+This document is published for examination, experimental implementation and evaluation. It is not an official specification.
 
 # <a id="design-principles">Design principles</a>
 
@@ -43,7 +43,7 @@ This document is published for examination, experimental implementation and eval
 # <a id="endpoints">Endpoints</a>
 
 ## <a id="endpoint-organization">Organization profiles</a>
-An organization profile is the metadata of an organization describing its characteristics, both administrative, descriptive and structural.
+An organization profile contains the metadata of an organization describing its characteristics, both administrative, descriptive and structural.
 
 ### <a id="endpoint-organization-list">List all organization profiles</a>
 
@@ -62,7 +62,7 @@ Accept | application/ld+json
 Key | Value
 --|--
 Status | 200 OK
-ETag | {Etag value}
+ETag | {}
 Content-Type | application/ld+json
 Accept-Post | application/ld+json
 Allow | POST,GET
@@ -150,7 +150,7 @@ Accept | application/ld+json
 Key | Value
 --|--
 Status | 200 OK
-ETag | {Etag value}
+ETag | {etagValue}
 Content-Type | application/ld+json
 Accept-Patch | application/ld+json
 Allow | GET,PATCH,DELETE
@@ -195,7 +195,7 @@ Status | Error description
 ###### Headers
 Key | Value
 --|--
-If-Match | {Etag value}
+If-Match | {etagValue}
 Content-Type | application/ld+json
 Link | ```<http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns/ldp#Resource>; rel="type"```
 
@@ -228,6 +228,8 @@ Status | Error description
 --|--
 400 Bad Request | The request is invalid
 404 Not Found | The resource does not exist
+428 Precondition Required | The precondition header is missing (If-Match)
+412 Precondition Failed | The precondition header is invalid (If-Match)
 
 ### <a id="endpoint-organization-unregister">Unregister an organization profile</a>
 
@@ -238,7 +240,7 @@ Status | Error description
 ###### Headers
 Key | Value
 --|--
-If-Match | {Etag value}
+If-Match | {etagValue}
 
 #### Response
 
@@ -254,9 +256,11 @@ Status | Error description
 --|--
 400 Bad Request | The request is invalid
 404 Not Found | The resource does not exist
+428 Precondition Required | The precondition header is missing (If-Match)
+412 Precondition Failed | The precondition header is invalid (If-Match)
 
 ## <a id="endpoint-dataset">Dataset profiles</a>
-A dataset profile is the metadata of a dataset describing its characteristics, both administrative, descriptive and structural.
+A dataset profile contains the metadata of a dataset describing its characteristics, both administrative, descriptive and structural.
 
 ### <a id="endpoint-dataset-list">List all dataset profiles</a>
 
@@ -275,7 +279,7 @@ Accept | application/ld+json
 Key | Value
 --|--
 Status | 200 OK
-ETag | {Etag value}
+ETag | {etagValue}
 Content-Type | application/ld+json
 Accept-Post | application/ld+json
 Allow | POST,GET
@@ -369,7 +373,7 @@ Accept | application/ld+json
 Key | Value
 --|--
 Status | 200 OK
-ETag | {Etag value}
+ETag | {etagValue}
 Content-Type | application/ld+json
 Accept-Patch | application/ld+json
 Allow | GET,PATCH,DELETE
@@ -418,7 +422,7 @@ Status | Error description
 ###### Headers
 Key | Value
 --|--
-If-Match | {Etag value}
+If-Match | {etagValue}
 Content-Type | application/ld+json
 Link | ```<http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns/ldp#Resource>; rel="type"```
 
@@ -455,6 +459,8 @@ Status | Error description
 --|--
 400 Bad Request | The request is invalid
 404 Not Found | The resource does not exist
+428 Precondition Required | The precondition header is missing (If-Match)
+412 Precondition Failed | The precondition header is invalid (If-Match)
 
 ### <a id="endpoint-dataset-unregister">Unregister a dataset profile</a>
 
@@ -465,7 +471,7 @@ Status | Error description
 ###### Headers
 Key | Value
 --|--
-If-Match | {Etag value}
+If-Match | {etagValue}
 
 #### Response
 
@@ -481,6 +487,8 @@ Status | Error description
 --|--
 400 Bad Request | The request is invalid
 404 Not Found | The resource does not exist
+428 Precondition Required | The precondition header is missing (If-Match)
+412 Precondition Failed | The precondition header is invalid (If-Match)
 
 ## <a id="endpoint-object">Object profiles</a>
 An object profile is a subset of the metadata of an object containing its URI and URI references to (a) the terms that characterize the object and (b) to other, related objects (for instance, the parts of a multi-volume book).
