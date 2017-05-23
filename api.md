@@ -491,14 +491,14 @@ Status | Error description
 412 Precondition Failed | The precondition header is invalid (If-Match)
 
 ## <a id="endpoint-object">Object profiles</a>
-An object profile is a subset of the metadata of an object containing its URI and URI references to (a) the terms that characterize the object and (b) to other, related objects (for instance, the parts of a multi-volume book).
+An object profile is a subset of the metadata of an object containing its URI and URI references to (a) the terms that characterize the object and (b) other, related objects (for instance, the parts of a multi-volume book).
 
 Contrary to an organization and dataset profile, the Registry does not assign a URI to an object profile. An object profile is merely a container of backlinks, not a resource on its own. If therefore cannot be registered, updated or unregistered like an organization or dataset profile. Instead, an object profile is maintained via notifications.
 
 We’re considering [Webmention](https://www.w3.org/TR/webmention/) as the protocol for sending and receiving notifications. The basic flow is as follows:
 
 1. A curator at a heritage institution creates or updates an object description in his collection management system (CMS), including a term from a terminology source.
-2. The CMS sends a notification to the Webmention endpoint of the Registry, containing the URI of the object description (“source”) and the URI of the term (“target”).
+2. The CMS sends a notification to the Webmention endpoint of the institution in the Registry, containing the URI of the object description ("source") and the URI of the term ("target").
 3. The Registry receives the notification.
 4. The Registry verifies that the target (the URI of the term) is valid.
 5. The Registry verifies that the source (the URI of the object description) is valid and contains a link to the target (by making a GET request to the source).
