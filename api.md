@@ -15,7 +15,7 @@ Registry: API
     * [Update an organization profile](#endpoint-organization-update)
     * [Unregister an organization profile](#endpoint-organization-unregister)
   * [Dataset profiles](#endpoint-dataset)
-    * [List all organization profiles](#endpoint-dataset-list)
+    * [List all dataset profiles](#endpoint-dataset-list)
     * [Register a dataset profile](#endpoint-dataset-register)
     * [Retrieve a dataset profile](#endpoint-dataset-retrieve)
     * [Update a dataset profile](#endpoint-dataset-update)
@@ -62,7 +62,7 @@ Accept | application/ld+json
 Key | Value
 --|--
 Status | 200 OK
-ETag | {}
+ETag | {etagValue}
 Content-Type | application/ld+json
 Accept-Post | application/ld+json
 Allow | POST,GET
