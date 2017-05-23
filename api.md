@@ -326,8 +326,7 @@ Link | ```<http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns
 {
   "@context": {
     "dcat": "http://www.w3.org/ns/dcat#",
-    "dcterms": "http://purl.org/dc/terms/",
-    "ldp": "http://www.w3.org/ns/ldp#"
+    "dcterms": "http://purl.org/dc/terms/"
   },
   "@type": "dcat:Dataset",
   "dcterms:title": "Nationale Bibliografie",
@@ -384,8 +383,7 @@ Link | ```<http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns
 {
   "@context": {
     "dcat": "http://www.w3.org/ns/dcat#",
-    "dcterms": "http://purl.org/dc/terms/",
-    "ldp": "http://www.w3.org/ns/ldp#"
+    "dcterms": "http://purl.org/dc/terms/"
   },
   "@id": "/organizations/4/datasets/4",
   "@type": "dcat:Dataset",
@@ -431,8 +429,7 @@ Link | ```<http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns
 {
   "@context": {
     "dcat": "http://www.w3.org/ns/dcat#",
-    "dcterms": "http://purl.org/dc/terms/",
-    "ldp": "http://www.w3.org/ns/ldp#"
+    "dcterms": "http://purl.org/dc/terms/"
   },
   "@type": "dcat:Dataset",
   "dcterms:title": "Nationale Bibliografie",
