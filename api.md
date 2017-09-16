@@ -78,11 +78,11 @@ Link | ```<http://www.w3.org/ns/ldp#BasicContainer>; rel="type",<http://www.w3.o
   "@id": "/organizations",
   "@type": ["ldp:Container", "ldp:BasicContainer"],
   "dcterms:title": "Organizations",
-  "ldp:contains": {
+  "ldp:contains": [
     {"@id": "/organizations/1"},
     {"@id": "/organizations/2"},
     {"@id": "/organizations/3"}
-  }
+  ]
 }
 ```
 
@@ -295,11 +295,11 @@ Link | ```<http://www.w3.org/ns/ldp#BasicContainer>; rel="type",<http://www.w3.o
   "@id": "/organizations/4/datasets",
   "@type": ["ldp:Container", "ldp:BasicContainer"],
   "dcterms:title": "Datasets of Koninklijke Bibliotheek",
-  "ldp:contains": {
+  "ldp:contains": [
     {"@id": "/organizations/4/datasets/1"},
     {"@id": "/organizations/4/datasets/2"},
     {"@id": "/organizations/4/datasets/3"}
-  }
+  ]
 }
 ```
 
@@ -490,7 +490,7 @@ Status | Error description
 ## <a id="endpoint-object">Object profiles</a>
 An object profile is a subset of the metadata of an object containing its URI and URI references to (a) the terms that characterize the object and (b) other, related objects (for instance, the parts of a multi-volume book).
 
-Contrary to an organization and dataset profile, the Registry does not assign a URI to an object profile. An object profile is merely a container of backlinks, not a resource on its own. If therefore cannot be registered, updated or unregistered like an organization or dataset profile. Instead, an object profile is maintained via notifications.
+Contrary to an organization and dataset profile, the Registry does not assign a URI to an object profile. An object profile is merely a container of backlinks, not a resource on its own. It therefore cannot be registered, updated or unregistered like an organization or dataset profile. Instead, an object profile is maintained via notifications.
 
 We’re considering [Webmention](https://www.w3.org/TR/webmention/) as the protocol for sending and receiving notifications. The basic flow is as follows:
 
