@@ -1,5 +1,5 @@
 
-Registry: API
+Register-function: API
 ==============================
 
 # <a id="contents">Contents</a>
@@ -19,7 +19,7 @@ Registry: API
   
 # <a id="intro">Introduction</a>
 
-This document outlines the _application programming interface_ (API) of NDE's _proof of concept_ Registry. It describes the endpoints that can be used by consuming applications, such as the collection management systems of cultural heritage institutions.
+This document outlines the _application programming interface_ (API) of NDE's _proof of concept_ Register. It describes the endpoints that can be used by consuming applications, such as the collection management systems of cultural heritage institutions.
 
 # <a id="status">Status of this document</a>
 
