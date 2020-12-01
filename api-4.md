@@ -47,7 +47,7 @@ A dataset description contains the metadata of a dataset describing its characte
 
 #### Request
 
-<code>POST /dataset/register</code>
+<code>POST /datasets</code>
 
 ###### Headers
 Key | Value
@@ -87,7 +87,7 @@ Status | Error description
 
 #### Request
 
-<code>POST /dataset/validate</code>
+<code>PUT /dataset/validate</code>
 
 ###### Headers
 Key | Value
@@ -103,6 +103,8 @@ Link | ```<http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns
 ```
 
 #### Response
+
+TODO
 
 ###### Headers
 Key | Value
