@@ -47,7 +47,7 @@ A dataset description contains the metadata of a dataset describing its characte
 
 #### Request
 
-<code>POST /datasets</code>
+<code>POST https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets</code>
 
 ###### Headers
 Key | Value
@@ -83,11 +83,11 @@ Status | Error description
 400 Bad Request | The URI could not be fetched.
 403 Forbidden | The domain name part of the URI is not on the access list.
 
-### <a id="endpoint-dataset-validate">Validate a dataset description</a>
+### <a id="endpoint-dataset-validate">Validate a dataset description</a> - not yet implemented
 
 #### Request
 
-<code>PUT /dataset/validate</code>
+<code>PUT https://demo.netwerkdigitaalerfgoed.nl/register-api/dataset/validate</code>
 
 ###### Headers
 Key | Value
@@ -119,11 +119,11 @@ Status | Error description
 --|--
 404 Not Found | The URI does not exist.
 
-### <a id="endpoint-dataset-search">Search dataset descriptions</a>
+### <a id="endpoint-dataset-search">Search dataset descriptions</a> - not yet implemented
 
 #### Request
 
-<code>GET /datasets</code>
+<code>GET https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets</code>
 
 ###### Headers
 Key | Value
