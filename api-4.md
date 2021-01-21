@@ -45,13 +45,13 @@ A dataset description contains the metadata of a dataset describing its characte
 
 <code>POST https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets</code>
 
-###### Headers
+##### Headers
 Key | Value
 --|--
 Content-Type | application/ld+json
 Link | ```<http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns/ldp#Resource>; rel="type"```
 
-###### Content
+##### Contents
 
 The URL which is registered via this endpoint can depict the following resources:
 - HTML page with one or more dataset descriptions inlined in JSON-LD
@@ -61,14 +61,14 @@ The URL which is registered via this endpoint can depict the following resources
 - RDF resource with one or more datasets descriptions, where content negotionation is used to fetch the resource
 - RDF resource with data catalog, where content negotionation is used to fetch the resource (not yet implemented)
 
-###### Body (example)
+##### Body (example)
 ```
 {
   "@id": "https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html"
 }
 ```
 
-###### Example (Curl)
+##### Example (Curl)
 ```
 curl 'https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets' \
   -H 'link: <http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns/ldp#Resource>; rel="type"' \
@@ -78,19 +78,19 @@ curl 'https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets' \
 
 #### Response
 
-###### Headers
+##### Headers
 Key | Value
 --|--
 Status | 200 OK
 
-###### Contents
+##### Contents
 Body | Description
 --|--
 { "status":"added" } | URL added, will be crawled soon
 { "status":"updated" } | URL already known, will be crawled soon
 { "status":"deleted" } | URL was deleted (because URL already known and HEAD request to URL results in a 404)
 
-###### Errors
+##### Errors
 Status | Error description
 --|--
 404 Not Found | The URL does not exist.
@@ -98,40 +98,74 @@ Status | Error description
 403 Forbidden | The domain name part of the URL is not on the access list.
 406 Not Acceptable |  The URL could be fetched but a dataset
 
-### <a id="endpoint-dataset-validate">Validate a dataset description</a> - not yet implemented
+### <a id="endpoint-dataset-validate">Validate a dataset description</a>
 
 #### Request
 
-<code>PUT https://demo.netwerkdigitaalerfgoed.nl/register-api/dataset/validate</code>
+<code>PUT https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets/validate</code>
 
-###### Headers
+##### Headers
 Key | Value
 --|--
 Content-Type | application/ld+json
 Link | ```<http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns/ldp#Resource>; rel="type"```
 
-###### Body (example)
+##### Body (example)
+
 ```
 {
   "@id": "https://data.kb.nl/datasets/nationale-bibliografie"
 }
 ```
+##### Example (Curl)
+
+```
+curl -i -X PUT 'https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets/validate' \
+  -H 'link: <http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns/ldp#Resource>; rel="type"' \
+  -H 'content-type: application/ld+json' \
+  --data-binary '{"@id":"https://demo.netwerkdigitaalerfgoed.nl/datasets/kb/2.html"}'
+```
 
 #### Response
 
-TODO
+When the validation of the dataset description finds no violations, the output is empty (HTTP 200). Otherwise (HTTP 400), the results of the (SHALC) validation is shown as triples.
 
-###### Headers
+##### Headers
 Key | Value
 --|--
 Status | 200 OK
 
-###### Contents
-TODO: **recognized data model, eg. schema.org/Dataset, DCAT, and information about absence of required properties or invalid parts, SHACL based validation format**
+##### Contents (example of found violations)
 
-###### Errors
+Example validation reports which indicates the dataset description is missing a creator and a description.
+
+```
+_:b5 a <http://www.w3.org/ns/shacl#ValidationResult>;
+    <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation>;
+    <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#MinCountConstraintComponent>;
+    <http://www.w3.org/ns/shacl#sourceShape> _:df_7_4.
+_:df_7_4 <http://www.w3.org/ns/shacl#path> <http://schema.org/creator>;
+    <http://www.w3.org/ns/shacl#minCount> 1;
+    <http://www.w3.org/ns/shacl#class> <http://schema.org/Organization>;
+    <http://www.w3.org/ns/shacl#node> "schema:CreatorShape".
+_:b5 <http://www.w3.org/ns/shacl#focusNode> <http://data.bibliotheken.nl/id/dataset/gtt>;
+    <http://www.w3.org/ns/shacl#resultPath> <http://schema.org/creator>;
+    <http://www.w3.org/ns/shacl#resultMessage> "Less than 1 values".
+_:b6 a <http://www.w3.org/ns/shacl#ValidationResult>;
+    <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation>;
+    <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#MinCountConstraintComponent>;
+    <http://www.w3.org/ns/shacl#sourceShape> _:df_7_2.
+_:df_7_2 <http://www.w3.org/ns/shacl#path> <http://schema.org/description>;
+    <http://www.w3.org/ns/shacl#minCount> 1.
+_:b6 <http://www.w3.org/ns/shacl#focusNode> _:n3-5;
+    <http://www.w3.org/ns/shacl#resultPath> <http://schema.org/description>;
+    <http://www.w3.org/ns/shacl#resultMessage> "Less than 1 values".
+```
+
+##### Errors
 Status | Error description
 --|--
+400 Bad Request | There were validation errors.
 404 Not Found | The URL does not exist.
 
 ### <a id="endpoint-dataset-search">Search dataset descriptions</a> - not yet implemented (meanwhile use https://triplestore.netwerkdigitaalerfgoed.nl/)
@@ -140,14 +174,14 @@ Status | Error description
 
 <code>GET https://demo.netwerkdigitaalerfgoed.nl/register-api/datasets</code>
 
-###### Headers
+##### Headers
 Key | Value
 --|--
 Accept | application/ld+json
 
 #### Response
 
-###### Headers
+##### Headers
 Key | Value
 --|--
 Status | 200 OK
@@ -157,7 +191,7 @@ Accept-Post | application/ld+json
 Allow | POST,GET
 Link | ```<http://www.w3.org/ns/ldp#BasicContainer>; rel="type",<http://www.w3.org/ns/ldp#Resource>; rel="type"```
 
-###### Body (example)
+##### Body (example)
 ```
 {
   "@context": {
@@ -175,13 +209,13 @@ Link | ```<http://www.w3.org/ns/ldp#BasicContainer>; rel="type",<http://www.w3.o
 }
 ```
 
-###### Errors
+##### Errors
 Status | Error description
 --|--
 400 Bad Request | The request is invalid
 404 Not Found | The resource does not exist
 
 
-###### Not yet specified (TODO)
+##### Not yet specified (TODO)
 
 > filtering, searching, including wildcards, aliases for common queries (eg. list all organisation with 'archive' in the name), paginating, sorting (only nice-to-have).
