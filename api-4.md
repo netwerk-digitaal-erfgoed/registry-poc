@@ -55,11 +55,11 @@ Link | ```<http://www.w3.org/ns/ldp#RDFSource>; rel="type",<http://www.w3.org/ns
 
 The URL which is registered via this endpoint can depict the following resources:
 - HTML page with one or more dataset descriptions inlined in JSON-LD
-- HTML page with dataset catalog (=set of dataset descriptions) inlined in JSON-LD
+- HTML page with dataset catalog (=set of dataset descriptions) inlined in JSON-LD (not yet implemented)
 - HTML page with one or more dataset description as microdata (not yet implemented)
 - HTML page with dataset catalog (=set of dataset descriptions) as microdata (not yet implemented)
 - RDF resource with one or more datasets descriptions, where content negotionation is used to fetch the resource
-- RDF resource with data catalog, where content negotionation is used to fetch the resource
+- RDF resource with data catalog, where content negotionation is used to fetch the resource (not yet implemented)
 
 ###### Body (example)
 ```
