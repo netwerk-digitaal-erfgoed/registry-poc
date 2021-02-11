@@ -96,7 +96,7 @@ Status | Error description
 404 Not Found | The URL does not exist.
 400 Bad Request | The URL could not be fetched.
 403 Forbidden | The domain name part of the URL is not on the access list.
-406 Not Acceptable |  The URL could be fetched but a dataset
+406 Not Acceptable |  The URL could be fetched but a dataset was not found.
 
 ### <a id="endpoint-dataset-validate">Validate a dataset description</a>
 
@@ -167,6 +167,7 @@ Status | Error description
 --|--
 400 Bad Request | There were validation errors.
 404 Not Found | The URL does not exist.
+406 Not Acceptable |  The URL could be fetched but a dataset was not found.
 
 ### <a id="endpoint-dataset-search">Search dataset descriptions</a> - not yet implemented (meanwhile use https://triplestore.netwerkdigitaalerfgoed.nl/)
 
