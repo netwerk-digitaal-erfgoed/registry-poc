@@ -1,1 +1,1 @@
-# Documentation of the proof of concept registry
+# ⚠️ This repository is deprecated. Please refer to https://github.com/netwerk-digitaal-erfgoed/register.
